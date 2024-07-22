@@ -1,0 +1,1077 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wise Investo</title>
+    <style>
+        /* Existing styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html, body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Arial', sans-serif;
+            color: #333;
+            background-color: #f5f5f5;
+        }
+
+        header {
+            background: #262626;
+            padding: 0 50px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 70px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            position: fixed;
+            width: 100%;
+            z-index: 1000;
+            top: 0;
+        }
+
+        .logo {
+            color: #fff;
+            font-weight: bold;
+            text-transform: uppercase;
+            font-size: 28px;
+            letter-spacing: 2px;
+        }
+
+        nav {
+            display: flex;
+            align-items: center;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+        }
+
+        nav ul li {
+            margin: 0 15px;
+            position: relative;
+        }
+
+        nav ul li a, .dropbtn {
+            text-decoration: none;
+            color: #fff;
+            font-weight: bold;
+            text-transform: uppercase;
+            padding: 10px 15px;
+            transition: background 0.3s ease, color 0.3s ease;
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-family: 'Arial', sans-serif;
+            font-size: 16px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        nav ul li a:hover, .dropbtn:hover {
+            background: #ff9900;
+            border-radius: 5px;
+            color: #fff;
+        }
+
+        nav ul li.active a {
+            background: #ff9900;
+            border-radius: 5px;
+            color: #fff;
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #262626;
+            min-width: 160px;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            z-index: 1;
+        }
+
+        .dropdown-content a {
+            float: none;
+            color: #fff;
+            padding: 10px 15px;
+            text-decoration: none;
+            display: block;
+            text-align: left;
+            transition: background 0.3s ease, color 0.3s ease;
+            border-radius: 5px;
+        }
+
+        .dropdown-content a:hover {
+            background-color: #ff9900;
+        }
+
+        .banner {
+            width: 100%;
+            height: 50vh;
+            overflow: hidden;
+            position: relative;
+            margin-top: 70px;
+        }
+
+        .banner img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: brightness(60%);
+        }
+
+        .banner-text {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: #fff;
+            text-align: center;
+            width: 80%;
+        }
+
+        .banner-text h1 {
+            font-size: 60px;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
+        }
+
+        .banner-text p {
+            font-size: 24px;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+        }
+
+        .content {
+            padding: 50px 10%;
+            background: #fff;
+        }
+
+        .content h2 {
+            font-size: 36px;
+            margin-bottom: 25px;
+            color: #ff9900;
+            border-bottom: 3px solid #ff9900;
+            display: inline-block;
+        }
+
+        .content p {
+            font-size: 15px;
+            line-height: 1.7;
+            margin-bottom: 25px;
+            color: #555;
+        }
+
+        .services {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .service {
+            background: #f9f9f9;
+            padding: 20px;
+            flex: 1 1 calc(48%);
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border-radius: 10px;
+        }
+
+        .service:hover {
+            transform: scale(1.05);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .service h3 {
+            margin-bottom: 15px;
+            color: #333;
+            font-size: 22px;
+        }
+
+        .explaination h4 {
+	    line-height: 1.8;
+            margin-bottom: 15px;
+            color: #ff9900;
+            font-size: 18px;
+        }
+
+        footer {
+            background: #000;
+            color: #fff;
+            padding: 20px 50px;
+            text-align: center;
+            margin-top: 50px;
+            position: relative;
+        }
+
+        footer p {
+            margin: 5px 0;
+        }
+
+        .calculator-container {
+            background: #f9f9f9;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            margin: auto;
+            max-width: 600px;
+        }
+
+        .calculator-container label,
+        .calculator-container input,
+        .calculator-container select,
+        .calculator-container button {
+            display: block;
+            width: 100%;
+            margin-bottom: 10px;
+        }
+
+        .calculator-container input,
+        .calculator-container select {
+            padding: 10px;
+            font-size: 16px;
+        }
+
+        .calculator-container button {
+            padding: 10px;
+            background: #ff9900;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background 0.3s ease;
+        }
+
+        .calculator-container button:hover {
+            background: #e68a00;
+        }
+
+        .result {
+            font-size: 15px;
+            color: #555;
+            margin-top: 20px;
+        }
+
+        .error {
+            font-size: 15px;
+            color: red;
+            margin-top: 20px;
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+<header>
+    <div class="logo">Wise Investo</div>
+    <nav>
+        <ul>
+            <li><a href="#" onclick="showContent('home')">Home</a></li>
+            <li><a href="#" onclick="showContent('aboutUs')">About Us</a></li>
+            <li><a href="#" onclick="showContent('simpleInterest')">Simple Interest</a></li>
+            <li class="dropdown" onmouseover="toggleDropdown('dropdownContentCompoundinterest', true)" onmouseout="toggleDropdown('dropdownContentCompoundinterest', false)">
+                <button class="dropbtn">Compound Interest</button>
+                <div class="dropdown-content" id="dropdownContentCompoundinterest">
+                    <a href="#" onclick="showContent('daily')">Daily</a>
+                    <a href="#" onclick="showContent('monthly')">Monthly</a>
+                    <a href="#" onclick="showContent('quarterly')">Quarterly</a>
+                    <a href="#" onclick="showContent('semiannually')">Semi-annually</a>    
+                    <a href="#" onclick="showContent('annually')">Annually</a>      
+                </div>
+            </li>
+            <li class="dropdown" onmouseover="toggleDropdown('dropdownContentAnnuity', true)" onmouseout="toggleDropdown('dropdownContentAnnuity', false)">
+                <button class="dropbtn">Annuity</button>
+                <div class="dropdown-content" id="dropdownContentAnnuity">
+                    <a href="#" onclick="showContent('ordinary')">Ordinary</a>
+                    <a href="#" onclick="showContent('annuityDue')">Due</a>
+                </div>
+            </li>
+            <li><a href="#" onclick="showContent('contactUs')">Contact Us</a></li>
+        </ul>
+    </nav>
+</header>
+
+<div class="banner">
+    <img src="finance1.jpg" alt="Investment Banner">
+    <div class="banner-text">
+        <h1>Welcome to Wise Investo</h1>
+        <p>Your Path to Smart Investments</p>
+    </div>
+</div>
+
+<div class="content" id="home">
+    <h2>Welcome to Our Service</h2>
+    <p>"Unlock the potential of your investments with our powerful and user-friendly calculator, designed to help you make informed financial decisions and achieve your wealth goals effortlessly."</p>
+    <p>"Introducing our advanced Investment Calculator, designed to empower you with the tools to expertly manage and grow your wealth."</p>
+
+    <h2>Our Services</h2>
+    <div class="services">
+        <div class="service">
+            <h3>Future Value Estimation</h3>
+            <p>Using a given interest rate and frequency of compounding, we can determine how much an investment or savings will increase in value over a given time.</p>
+        </div>
+        <div class="service">
+            <h3>Retirement Planning</h3>
+            <p>We can calculate the amount of money you will need to save each time to meet your retirement objectives.</p>
+        </div>
+        <div class="service">
+            <h3>Compound Interest Understanding</h3>
+            <p>We can examine the effects of various compounding frequencies (daily, monthly, quarterly, semi-annually, or annually) on the growth of investments.</p>
+        </div>
+        <div class="service">
+            <h3>Comparison of Investment Options</h3>
+            <p>We can determine the investment choice that most closely matches your risk tolerance and financial objectives.</p>
+        </div>
+    </div>
+</div>
+
+<div class="content" id="aboutUs" style="display: none;">
+    <h2>About Us</h2>
+    <p>Welcome to our innovative financial platform, where we bring clarity to your investment planning and financial forecasting. Our specialty lies in offering precise future value calculations with flexible compounding options. Whether you need annual, semi-annual, quarterly, monthly, or daily compounding, our advanced tools have you covered.</p>
+    <p>Our services are designed to be versatile and user-friendly, making them accessible for individuals and businesses alike. We understand the importance of accuracy and adaptability in financial planning, which is why we support multiple currencies, ensuring that you can perform your calculations with the specific financial dynamics of different global markets in mind.</p>
+    <p>At our core, we believe in empowering you to make informed financial decisions. Our goal is to provide you with the insights and tools needed to understand and predict the growth of your investments, helping you achieve your financial goals with confidence and precision. Thank you for choosing us as your trusted partner in financial planning.</p>
+</div>
+
+<div class="content" id="simpleInterest" style="display: none;">
+    <div class="calculator-container">
+        <h2>Simple Interest Rate Calculator</h2>
+
+<div class="explainations">
+            <div class="explaination">
+                <h4>Calculate Future Value with Simple Interest</h4>
+                <p>This calculator determines the future value of an investment or loan based on simple interest. </p>
+                <ul>
+                    <li><strong>How to Use:</strong> Enter the initial investment amount, annual interest rate, and number of years.</li>
+                    <li><strong>Use For:</strong>To determine the total amount of money (future value) that will be accumulated from an initial investment or loan over a specified period at a given simple interest rate.</li>
+                    <li><strong>Calculate:</strong> The future value of the investment.</li>
+                </ul>
+		<br>
+            </div>
+            <div class="explaination">
+                <h4>Calculate Present Value with Simple Interest</h4>
+                <p>This calculator helps to find the present value or initial principal of an investment or loan when the future value, interest rate, and time period are known. </p>
+                <ul>
+                    <li><strong>How to Use:</strong> Input the desired future value, annual interest rate, and number of years.</li>
+                    <li><strong>Use For:</strong> To find out how much you need to invest or loan today (present value) to reach a specific future value with simple interest.</li>
+                    <li><strong>Calculate:</strong> The present value required to achieve the future value.</li>
+                </ul>
+		<br>
+            </div>
+        </div>
+
+	<label for="calculationType">Calculate:</label>
+	<select id="calculationType">
+	<option value="futureValue">Future Investment Value</option>
+	<option value="presentValue">Present Investment Value</option>
+        </select>
+
+        <label for="initialInvestmentSimple">Initial Investment / Accumulated Value:</label>
+        <input type="number" id="initialInvestmentSimple" placeholder="Enter initial investment amount">
+        
+        <label for="simpleRate">Simple Interest Rate (%):</label>
+        <input type="number" id="simpleRate" placeholder="Enter the simple interest rate">
+
+        <label for="timePeriodSimple">Time Period (years):</label>
+        <input type="number" id="timePeriodSimple" placeholder="Enter time period in years">
+  
+        <button type="button" onclick="calculateSimpleInterest()">Calculate</button>
+        
+        <div class="result" id="resultSimple"></div>
+        <div class="error" id="errorSimple" style="display: none;">Please enter valid values: Principal > 0, Time Period > 0, Simple Interest Rate > Principal.</div>
+    </div>
+</div>
+
+<div class="content" id="daily" style="display: none;">
+    <div class="calculator-container">
+        <h2>Daily Compounded Interest Calculator</h2>
+
+        <div class="explainations">
+            <div class="explaination">
+                <h4>Calculate Future Value with Daily Compounding</h4>
+                <p>This calculator determines the future value of an investment or loan with daily compounded interest.</p>
+                <ul>
+                    <li><strong>How to Use:</strong> Enter the initial investment amount, annual interest rate, and number of years.</li>
+                    <li><strong>Use For:</strong> To find out how much your investment will grow over time with daily compounding.</li>
+                    <li><strong>Calculate:</strong> The future value of the investment.</li>
+                </ul>
+		<br>
+            </div>
+            <div class="explaination">
+                <h4>Calculate Present Value with Daily Compounding</h4>
+                <p>This calculator finds the present value needed for an investment or loan with daily compounded interest to reach a desired future value.</p>
+                <ul>
+                    <li><strong>How to Use:</strong> Input the desired future value, annual interest rate, and number of years.</li>
+                    <li><strong>Use For:</strong> Determine the initial principal required to achieve a specific future value with daily compounding.</li>
+                    <li><strong>Calculate:</strong> The initial principal amount required.</li>
+                </ul>
+		<br>
+            </div>
+        </div>
+
+        <label for="calculationTypeDaily">Calculate:</label>
+        <select id="calculationTypeDaily">
+            <option value="futureValue">Future Investment Value</option>
+            <option value="presentValue">Present Investment Value</option>
+        </select>
+
+        <label for="initialInvestmentDaily">Initial Investment/ Accumulated Value:</label>
+        <input type="number" id="initialInvestmentDaily" placeholder="Enter initial investment amount">
+
+        <label for="annualRateDaily">Annual Interest Rate (%):</label>
+        <input type="number" id="annualRateDaily" placeholder="Enter annual interest rate">
+
+        <label for="timePeriodDaily">Time Period (years):</label>
+        <input type="number" id="timePeriodDaily" placeholder="Enter time period in years">
+
+        <button onclick="calculateDaily()">Calculate</button>
+
+        <div id="resultDaily" class="result" style="display: none;"></div>
+        <div id="errorDaily" class="error" style="display: none;">Please enter valid values: Initial Investment > 0, Annual Interest Rate > 0, Time Period > 0</div>
+    </div>
+</div>
+
+
+<div class="content" id="monthly" style="display: none;">
+<div class="calculator-container">
+        <h2>Monthly Compounded Interest Calculator</h2>
+
+<div class="explainations">
+            <div class="explaination">
+                <h4>Calculate Future Value with Monthly Compounding</h4>
+                <p>This calculator computes the future value of an investment or loan with interest compounded monthly.</p>
+                <ul>
+                    <li><strong>How to Use:</strong> Enter the initial investment amount, annual interest rate, and number of years.</li>
+                    <li><strong>Use For:</strong>To find the future value when interest is compounded monthly.</li>
+                    <li><strong>Calculate:</strong> The future value of the investment.</li>
+                </ul>
+		<br>
+            </div>
+            <div class="explaination">
+                <h4>Calculate Present Value with Monthly Compounding</h4>
+                <p>This calculator determines the present value of an investment or loan with interest compounded monthly. </p>
+                <ul>
+                    <li><strong>How to Use:</strong> Input the desired future value, annual interest rate, and number of years.</li>
+                    <li><strong>Use For:</strong> To calculate the initial principal needed to reach a specific future value with monthly compounded interest.</li>
+                    <li><strong>Calculate:</strong> The initial principal amount required.</li>
+                </ul>
+		<br>
+            </div>
+        </div>
+
+
+        <label for="calculationType">Calculate:</label>
+        <select id="calculationTypeMonthly">
+            <option value="futureValue">Future Investment Value</option>
+            <option value="presentValue">Present Investment Value</option>
+        </select>
+
+        <label for="initialInvestmentMonthly">Initial Investment / Accumulated Value:</label>
+        <input type="number" id="initialInvestmentMonthly" placeholder="Enter initial investment amount">
+
+        <label for="annualRateMonthly">Annual Interest Rate (%):</label>
+        <input type="number" id="annualRateMonthly" placeholder="Enter annual interest rate">
+
+        <label for="timePeriodMonthly">Time Period (years):</label>
+        <input type="number" id="timePeriodMonthly" placeholder="Enter time period in years">
+
+        <button onclick="calculateMonthly()">Calculate</button>
+
+        <div id="resultMonthly" class="result" style="display: none;"></div>
+        <div id="errorMonthly" class="error" style="display: none;">Please enter valid values: Initial Investment > 0, Annual Interest Rate > 0, Time Period > 0</div>
+    </div>
+</div>
+
+<div class="content" id="quarterly" style="display: none;">
+<div class="calculator-container">
+        <h2>Quarterly Compounded Interest Calculator</h2>
+
+<div class="explainations">
+            <div class="explaination">
+                <h4>Calculate Future Value with Quarterly Compounding</h4>
+                <p>This calculator determines the future value of an investment or loan with interest compounded quarterly.</p>
+                <ul>
+                    <li><strong>How to Use:</strong> Enter the initial investment amount, annual interest rate, and number of years.</li>
+                    <li><strong>Use For:</strong>To find the future value when interest is compounded quarterly.</li>
+                    <li><strong>Calculate:</strong> The future value of the investment.</li>
+                </ul>
+		<br>
+            </div>
+            <div class="explaination">
+                <h4>Calculate Present Value with Quarterly Compounding</h4>
+                <p>This calculator helps to find the present value of an investment or loan with interest compounded quarterly. </p>
+                <ul>
+                    <li><strong>How to Use:</strong> Input the desired future value, annual interest rate, and number of years.</li>
+                    <li><strong>Use For:</strong>To determine the initial principal required to reach a specific future value with quarterly compounded interest.</li>
+                    <li><strong>Calculate:</strong> The initial principal amount required.</li>
+                </ul>
+		<br>
+            </div>
+        </div>
+
+        <label for="calculationType">Calculate:</label>
+        <select id="calculationTypeQuarterly">
+            <option value="futureValue">Future Investment Value</option>
+            <option value="presentValue">Present Investment Value</option>
+        </select>
+
+        <label for="initialInvestmentQuarterly">Initial Investment / Accumulated Value:</label>
+        <input type="number" id="initialInvestmentQuarterly" placeholder="Enter initial investment amount">
+
+        <label for="annualRateQuarterly">Annual Interest Rate (%):</label>
+        <input type="number" id="annualRateQuarterly" placeholder="Enter annual interest rate">
+
+        <label for="timePeriodQuarterly">Time Period (years):</label>
+        <input type="number" id="timePeriodQuarterly" placeholder="Enter time period in years">
+
+        <button onclick="calculateQuarterly()">Calculate</button>
+
+        <div id="resultQuarterly" class="result" style="display: none;"></div>
+        <div id="errorQuarterly" class="error" style="display: none;">Please enter valid values: Initial Investment > 0, Annual Interest Rate > 0, Time Period > 0</div>
+    </div>
+</div>
+
+<div class="content" id="semiannually" style="display: none;">
+<div class="calculator-container">
+        <h2>Semi-annually Compounded Interest Calculator</h2>
+
+<div class="explainations">
+            <div class="explaination">
+                <h4>Calculate Future Value with Semi-annually Compounding</h4>
+                <p>This calculator finds the future value of an investment or loan with interest compounded semi-annually.</p>
+                <ul>
+                    <li><strong>How to Use:</strong> Enter the initial investment amount, annual interest rate, and number of years.</li>
+                    <li><strong>Use For:</strong>To determine the future value when interest is compounded semi-annually.</li>
+                    <li><strong>Calculate:</strong> The future value of the investment.</li>
+                </ul>
+		<br>
+            </div>
+            <div class="explaination">
+                <h4>Calculate Present Value with Semi-annually Compounding</h4>
+                <p>This calculator calculates the present value of an investment or loan with interest compounded semi-annually.  </p>
+                <ul>
+                    <li><strong>How to Use:</strong> Input the desired future value, annual interest rate, and number of years.</li>
+                    <li><strong>Use For:</strong> To find out the initial principal needed to achieve a specific future value with semi-annually compounded interest.</li>
+                    <li><strong>Calculate:</strong> The initial principal amount required.</li>
+                </ul>
+		<br>
+            </div>
+        </div>
+
+        <label for="calculationType">Calculate:</label>
+        <select id="calculationTypeSemiannuall">
+            <option value="futureValue">Future Investment Value</option>
+            <option value="presentValue">Present Investment Value</option>
+        </select>
+
+        <label for="initialInvestmentSemiannuall">Initial Investment / Accumulated Value:</label>
+        <input type="number" id="initialInvestmentSemiannuall" placeholder="Enter initial investment amount">
+
+        <label for="annualRateSemiannuall">Annual Interest Rate (%):</label>
+        <input type="number" id="annualRateSemiannuall" placeholder="Enter annual interest rate">
+
+        <label for="timePeriodSemiannuall">Time Period (years):</label>
+        <input type="number" id="timePeriodSemiannuall" placeholder="Enter time period in years">
+
+        <button onclick="calculateSemiannuall()">Calculate</button>
+
+        <div id="resultSemiannuall" class="result" style="display: none;"></div>
+        <div id="errorSemiannuall" class="error" style="display: none;">Please enter valid values: Initial Investment > 0, Annual Interest Rate > 0, Time Period > 0</div>
+    </div>
+</div>
+
+<div class="content" id="annually" style="display: none;">
+<div class="calculator-container">
+        <h2>Annually Compounded Interest Calculator</h2>
+
+<div class="explainations">
+            <div class="explaination">
+                <h4>Calculate Future Value with Annually Compounding</h4>
+                <p>This calculator computes the future value of an investment or loan with interest compounded annually.</p>
+                <ul>
+                    <li><strong>How to Use:</strong> Enter the initial investment amount, annual interest rate, and number of years.</li>
+                    <li><strong>Use For:</strong>To determine the future value of an investment or loan when interest is compounded annually.</li>
+                    <li><strong>Calculate:</strong> The future value of the investment.</li>
+                </ul>
+		<br>
+            </div>
+            <div class="explaination">
+                <h4>Calculate Present Value with Annually Compounding</h4>
+                <p>This calculator determines the present value of an investment or loan with interest compounded annually.</p>
+                <ul>
+                    <li><strong>How to Use:</strong> Input the desired future value, annual interest rate, and number of years.</li>
+                    <li><strong>Use For:</strong> To determine how much you need to invest today to achieve a specific future value with annually compounded interest.</li>
+                    <li><strong>Calculate:</strong> The initial principal amount required.</li>
+                </ul>
+		<br>
+            </div>
+        </div>
+
+        <label for="calculationType">Calculate:</label>
+        <select id="calculationTypeAnnuall">
+            <option value="futureValue">Future Investment Value</option>
+            <option value="presentValue">Present Investment Value</option>
+        </select>
+
+        <label for="initialInvestmentAnnuall">Initial Investment / Accumulated Value:</label>
+        <input type="number" id="initialInvestmentAnnuall" placeholder="Enter initial investment amount">
+
+        <label for="annualRateAnnuall">Annual Interest Rate (%):</label>
+        <input type="number" id="annualRateAnnuall" placeholder="Enter annual interest rate">
+
+        <label for="timePeriodAnnuall">Time Period (years):</label>
+        <input type="number" id="timePeriodAnnuall" placeholder="Enter time period in years">
+
+        <button onclick="calculateAnnuall()">Calculate</button>
+
+        <div id="resultAnnuall" class="result" style="display: none;"></div>
+        <div id="errorAnnuall" class="error" style="display: none;">Please enter valid values: Initial Investment > 0, Annual Interest Rate > 0, Time Period > 0</div>
+    </div>
+</div>
+
+<div class="content" id="ordinary" style="display: none;">
+    <div class="calculator-container">
+        <h2>Ordinary Annuity Calculator</h2>
+
+<div class="explainations">
+            <div class="explaination">
+                <h4>Calculate Future Value with Ordinary Annuity</h4>
+                <p>This calculator helps to find the future value of an ordinary annuity, where payments are made at the end of each period.</p>
+                <ul>
+                    <li><strong>How to Use:</strong> Enter the initial investment amount, annual interest rate, and number of years.</li>
+                    <li><strong>Use For:</strong>To find the future value of an ordinary annuity, where payments are made at the end of each period.</li>
+                    <li><strong>Calculate:</strong> The future value of the annuity.</li>
+                </ul>
+		<br>
+            </div>
+            <div class="explaination">
+                <h4>Calculate Present Value with Ordinary Annuity</h4>
+                <p>This calculator calculates the present value of an ordinary annuity, where payments are made at the end of each period.</p>
+                <ul>
+                    <li><strong>How to Use:</strong> Input the desired future value, annual interest rate, and number of years.</li>
+                    <li><strong>Use For:</strong> To determine the present value of an ordinary annuity, where payments are made at the end of each period.</li>
+                    <li><strong>Calculate:</strong> The present value of the annuity.</li>
+                </ul>
+		<br>
+            </div>
+        </div>
+
+        <label for="calculationTypeOrdinary">Calculate:</label>
+        <select id="calculationTypeOrdinary">
+            <option value="futureValue">Future Investment Value</option>
+            <option value="presentValue">Present Investment Value</option>
+        </select>
+
+        <label for="initialInvestmentOrdinary">Initial Investment / Accumulated Value:</label>
+        <input type="number" id="initialInvestmentOrdinary" placeholder="Enter initial investment">
+
+        <label for="interestRateOrdinary">Annual Interest Rate (%):</label>
+        <input type="number" id="interestRateOrdinary" placeholder="Enter annual interest rate">
+
+        <label for="timePeriodOrdinary">Time Period (Years):</label>
+        <input type="number" id="timePeriodOrdinary" placeholder="Enter time period in years">
+
+        <button onclick="calculateOrdinaryAnnuity()">Calculate</button>
+
+        <div id="resultOrdinary" class="result"></div>
+        <div id="errorOrdinary" class="error" style="display: none;">Please enter valid values: Initial Investment > 0, Interest Rate > 0, Time Period > 0</div>
+    </div>
+</div>
+
+<div class="content" id="annuityDue" style="display: none;">
+    <div class="calculator-container">
+        <h2>Annuity Due Calculator</h2>
+
+<div class="explainations">
+            <div class="explaination">
+                <h4>Calculate Future Value with Annuity Due</h4>
+                <p>This calculator determines the future value of an annuity due, where payments are made at the beginning of each period.</p>
+                <ul>
+                    <li><strong>How to Use:</strong> Enter the initial investment amount, annual interest rate, and number of years.</li>
+                    <li><strong>Use For:</strong>To find the future value of an annuity due, where payments are made at the beginning of each period.</li>
+                    <li><strong>Calculate:</strong> The future value of the annuity.</li>
+                </ul>
+		<br>
+            </div>
+            <div class="explaination">
+                <h4>Calculate Present Value with Annuity Due</h4>
+                <p>This calculator finds the present value of an annuity due, where payments are made at the beginning of each period.</p>
+                <ul>
+                    <li><strong>How to Use:</strong> Input the desired future value, annual interest rate, and number of years.</li>
+                    <li><strong>Use For:</strong> To determine the present value of an annuity due, where payments are made at the beginning of each period.</li>
+                    <li><strong>Calculate:</strong> The present value of the annuity.</li>
+                </ul>
+		<br>
+            </div>
+        </div>
+
+	<label for="calculationType">Calculate:</label>
+	<select id="calculationType">
+	<option value="futureValue">Future Investment Value</option>
+	<option value="presentValue">Present Investment Value</option>
+        </select>
+
+        <label for="initialInvestmentDue">Initial Investment / Accumulated Value:</label>
+        <input type="number" id="initialInvestmentDue" placeholder="Enter initial investment">
+
+        <label for="interestRateDue">Annual Interest Rate (%):</label>
+        <input type="number" id="interestRateDue" placeholder="Enter annual interest rate">
+
+        <label for="timePeriodDue">Time Period (Years):</label>
+        <input type="number" id="timePeriodDue" placeholder="Enter time period in years">
+        
+        <button onclick="calculateAnnuityDue()">Calculate</button>
+        <div id="resultDue" class="result"></div>
+        <div id="errorDue" class="error" style="display: none;">Please enter valid values: Initial Investment > 0, Annual Interest Rate > 0, Time Period > 0</div>
+    </div>
+</div>
+
+
+<div class="content" id="contactUs" style="display: none;">
+    <h2>Contact Us</h2>
+    <p>If you have any questions or need further assistance, feel free to contact us:</p>
+    <ul>
+        <li>Email: support@wiseinvesto.com</li>
+        <li>Phone: +1 234 567 890</li>
+        <li>Address: 123 Finance Street, Investment City, Country</li>
+    </ul>
+</div>
+
+<script>
+    
+    function showContent(id) {
+        // Hide all content sections
+        var contents = document.querySelectorAll('.content');
+        contents.forEach(function(content) {
+            content.style.display = 'none';
+        });
+
+        // Display the selected content section
+        var selectedContent = document.getElementById(id);
+        if (selectedContent) {
+            selectedContent.style.display = 'block';
+        }
+    }
+
+    function toggleDropdown(id, show) {
+        var dropdownContent = document.getElementById(id);
+        if (dropdownContent) {
+            dropdownContent.style.display = show ? 'block' : 'none';
+        }
+    }
+
+function toggleFields() {
+    const calculationType = document.getElementById('calculationType').value;
+    const initialInvestmentField = document.getElementById('initialInvestmentFields');
+    const interestRateField = document.getElementById('interestRateFields');
+    const timePeriodField = document.getElementById('timePeriodFields');
+
+    if (calculationType === 'futureValue') {
+        initialInvestmentField.placeholder = 'Enter initial investment';
+        interestRateField.placeholder = 'Enter annual interest rate';
+        timePeriodField.placeholder = 'Enter time period in years';
+    } else if (calculationType === 'presentValue') {
+        initialInvestmentField.placeholder = 'Enter future investment value';
+        interestRateField.placeholder = 'Enter annual interest rate';
+        timePeriodField.placeholder = 'Enter time period in years';
+    }
+}
+
+function calculateSimpleInterest() {
+    var calculationType = document.getElementById('calculationType').value;
+    var principal = parseFloat(document.getElementById('initialInvestmentSimple').value);
+    var time = parseFloat(document.getElementById('timePeriodSimple').value);
+    var rate = parseFloat(document.getElementById('simpleRate').value) / 100; // Convert percentage to decimal
+    var errorDiv = document.getElementById('errorSimple');
+   
+    if (isNaN(principal) || principal <= 0 || isNaN(time) || time <= 0 || isNaN(rate) || rate <= 0) {
+        errorDiv.style.display = 'block';
+        errorDiv.innerText = 'Please enter valid values: Principal > 0, Time Period > 0, Rate > 0';
+        document.getElementById('resultSimple').style.display = 'none';
+        return;
+    }
+
+    var interest; 
+    var totalValue;
+
+    if (calculationType === 'futureValue') {
+        interest = principal * rate * time;
+        totalValue = principal + interest;
+        document.getElementById('resultSimple').innerHTML = `
+        <p>The simple interest accumulated on a principal of RM${principal.toFixed(2)}
+            at a rate of ${(rate * 100).toFixed(2)}% for ${time.toFixed(0)} years is <strong>RM${interest.toFixed(2)}</strong>,
+            resulting in a future value of <strong>RM${totalValue.toFixed(2)}.</strong></p>
+        `;
+    } else if (calculationType === 'presentValue') {
+        totalValue = principal / (1 + (rate * time));
+        interest = principal - totalValue;
+        document.getElementById('resultSimple').innerHTML = `
+           <p>The present value of an amount of RM${principal.toFixed(2)}
+            to be received in ${time.toFixed(0)} years at an interest rate of ${(rate * 100).toFixed(2)}%
+            per year is <strong>RM${totalValue.toFixed(2)}.</strong> The total interest saved is <strong>RM${interest.toFixed(2)}.</strong></p>
+        `;
+    }
+
+    errorDiv.style.display = 'none';
+    document.getElementById('resultSimple').style.display = 'block';
+}
+
+
+function calculateDaily() {
+            var initialInvestment = parseFloat(document.getElementById('initialInvestmentDaily').value);
+            var annualRate = parseFloat(document.getElementById('annualRateDaily').value);
+            var timePeriod = parseInt(document.getElementById('timePeriodDaily').value);
+
+            if (isNaN(initialInvestment) || isNaN(annualRate) || isNaN(timePeriod) || initialInvestment <= 0 || annualRate <= 0 || timePeriod <= 0) {
+                displayError('Daily');
+                return;
+            }
+
+            var ratePerPeriod = annualRate / 36500; // Daily compounding (assuming 365 days in a year)
+            var periodsPerYear = 365;
+            var totalPeriods = timePeriod * periodsPerYear;
+
+            var calculationType = document.getElementById('calculationTypeDaily').value;
+
+            if (calculationType === 'futureValue') {
+                var futureValue = initialInvestment * Math.pow(1 + ratePerPeriod, totalPeriods);
+        resultMessage = `An initial investment of RM${initialInvestment.toFixed(2)} compounded daily at an annual interest rate of ${annualRate.toFixed(2)}% over ${timePeriod} years will grow to <strong>RM${futureValue.toFixed(2)}.</strong>`;
+        displayResult('Daily', resultMessage);
+            } else if (calculationType === 'presentValue') {
+                var presentValue = initialInvestment / Math.pow(1 + ratePerPeriod, totalPeriods);
+        resultMessage = `An initial investment of RM${initialInvestment.toFixed(2)} compounded daily at an annual interest rate of ${annualRate.toFixed(2)}% over ${timePeriod} years is equivalent to a present value of <strong>RM${presentValue.toFixed(2)}.</strong>`;
+        displayResult('Daily', resultMessage);
+    }
+        }
+
+function calculateMonthly() {
+    var initialInvestment = parseFloat(document.getElementById('initialInvestmentMonthly').value);
+    var annualRate = parseFloat(document.getElementById('annualRateMonthly').value);
+    var timePeriod = parseInt(document.getElementById('timePeriodMonthly').value);
+
+    if (isNaN(initialInvestment) || isNaN(annualRate) || isNaN(timePeriod) || initialInvestment <= 0 || annualRate <= 0 || timePeriod <= 0) {
+        displayError('Monthly');
+        return;
+    }
+
+    var ratePerPeriod = annualRate / 1200; // Monthly compounding (assuming 4 quarters in a year)
+    var periodsPerYear =12;
+    var totalPeriods = timePeriod * periodsPerYear;
+
+    var calculationType = document.getElementById('calculationTypeMonthly').value;
+
+    if (calculationType === 'futureValue') {
+        var futureValue = initialInvestment * Math.pow(1 + ratePerPeriod, totalPeriods);
+        resultMessage = `An initial investment of RM${initialInvestment.toFixed(2)} compounded monthly at an annual interest rate of ${annualRate.toFixed(2)}% over ${timePeriod} years will grow to <strong>RM${futureValue.toFixed(2)}.</strong>`;
+        displayResult('Monthly', resultMessage);
+    } else if (calculationType === 'presentValue') {
+        var presentValue = initialInvestment / Math.pow(1 + ratePerPeriod, totalPeriods);
+        resultMessage = `An initial investment of RM${initialInvestment.toFixed(2)} compounded monthly at an annual interest rate of ${annualRate.toFixed(2)}% over ${timePeriod} years is equivalent to a present value of <strong>RM${presentValue.toFixed(2)}.</strong>`;
+        displayResult('Monthly', resultMessage);
+    }
+}
+
+
+function calculateQuarterly() {
+    var initialInvestment = parseFloat(document.getElementById('initialInvestmentQuarterly').value);
+    var annualRate = parseFloat(document.getElementById('annualRateQuarterly').value);
+    var timePeriod = parseInt(document.getElementById('timePeriodQuarterly').value);
+
+    if (isNaN(initialInvestment) || isNaN(annualRate) || isNaN(timePeriod) || initialInvestment <= 0 || annualRate <= 0 || timePeriod <= 0) {
+        displayError('Quarterly');
+        return;
+    }
+
+    var ratePerPeriod = annualRate / 400; // Quarterly compounding (assuming 4 quarters in a year)
+    var periodsPerYear = 4;
+    var totalPeriods = timePeriod * periodsPerYear;
+
+    var calculationType = document.getElementById('calculationTypeQuarterly').value;
+
+    if (calculationType === 'futureValue') {
+        var futureValue = initialInvestment * Math.pow(1 + ratePerPeriod, totalPeriods);
+        resultMessage = `An initial investment of RM${initialInvestment.toFixed(2)} compounded quarterly at an annual interest rate of ${annualRate.toFixed(2)}% over ${timePeriod} years will grow to <strong>RM${futureValue.toFixed(2)}</strong>.`;
+        displayResult('Quarterly', resultMessage);
+    } else if (calculationType === 'presentValue') {
+        var presentValue = initialInvestment / Math.pow(1 + ratePerPeriod, totalPeriods);
+        resultMessage = `An initial investment of RM${initialInvestment.toFixed(2)} compounded quarterly at an annual interest rate of ${annualRate.toFixed(2)}% over ${timePeriod} years is equivalent to a present value of <strong>RM${presentValue.toFixed(2)}</strong>.`;
+        displayResult('Quarterly', resultMessage);
+    }
+}
+
+
+function calculateSemiannuall() {
+            var initialInvestment = parseFloat(document.getElementById('initialInvestmentSemiannuall').value);
+            var annualRate = parseFloat(document.getElementById('annualRateSemiannuall').value);
+            var timePeriod = parseInt(document.getElementById('timePeriodSemiannuall').value);
+
+            if (isNaN(initialInvestment) || isNaN(annualRate) || isNaN(timePeriod) || initialInvestment <= 0 || annualRate <= 0 || timePeriod <= 0) {
+                displayError('Semiannuall');
+                return;
+            }
+
+            var ratePerPeriod = annualRate / 200; // Semiannuall compounding (assuming 2 quarters in a year)
+            var periodsPerYear = 2;
+            var totalPeriods = timePeriod * periodsPerYear;
+
+            var calculationType = document.getElementById('calculationTypeSemiannuall').value;
+
+            if (calculationType === 'futureValue') {
+                var futureValue = initialInvestment * Math.pow(1 + ratePerPeriod, totalPeriods);
+        resultMessage = `An initial investment of RM${initialInvestment.toFixed(2)} compounded semi-annually at an annual interest rate of ${annualRate.toFixed(2)}% over ${timePeriod} years will grow to <strong>RM${futureValue.toFixed(2)}</strong>.`;
+        displayResult('Semiannuall', resultMessage);
+            } else if (calculationType === 'presentValue') {
+                var presentValue = initialInvestment / Math.pow(1 + ratePerPeriod, totalPeriods);
+        resultMessage = `An initial investment of RM${initialInvestment.toFixed(2)} compounded semi-annually at an annual interest rate of ${annualRate.toFixed(2)}% over ${timePeriod} years is equivalent to a present value of <strong>RM${presentValue.toFixed(2)}</strong>.`;
+        displayResult('Semiannuall', resultMessage);
+    }
+        }
+
+function calculateAnnuall() {
+            var initialInvestment = parseFloat(document.getElementById('initialInvestmentAnnuall').value);
+            var annualRate = parseFloat(document.getElementById('annualRateAnnuall').value);
+            var timePeriod = parseInt(document.getElementById('timePeriodAnnuall').value);
+
+            if (isNaN(initialInvestment) || isNaN(annualRate) || isNaN(timePeriod) || initialInvestment <= 0 || annualRate <= 0 || timePeriod <= 0) {
+                displayError('Annuall');
+                return;
+            }
+
+            var ratePerPeriod = annualRate / 100; // annuall compounding (assuming 2 quarters in a year)
+            var periodsPerYear = 1;
+            var totalPeriods = timePeriod * periodsPerYear;
+
+            var calculationType = document.getElementById('calculationTypeAnnuall').value;
+
+            if (calculationType === 'futureValue') {
+                var futureValue = initialInvestment * Math.pow(1 + ratePerPeriod, totalPeriods);
+	resultMessage = `An initial investment of RM${initialInvestment.toFixed(2)} compounded annually at an annual interest rate of ${annualRate.toFixed(2)}% over ${timePeriod} years will grow to <strong>RM${futureValue.toFixed(2)}</strong>.`;
+        displayResult('Annuall', resultMessage);
+
+            } else if (calculationType === 'presentValue') {
+                var presentValue = initialInvestment / Math.pow(1 + ratePerPeriod, totalPeriods);
+        resultMessage = `An initial investment of RM${initialInvestment.toFixed(2)} compounded annually at an annual interest rate of ${annualRate.toFixed(2)}% over ${timePeriod} years is equivalent to a present value of <strong>RM${presentValue.toFixed(2)}</strong>.`;
+        displayResult('Annuall', resultMessage);
+            }
+        }
+
+        function displayError(type) {
+            document.getElementById('error' + type).style.display = 'block';
+            document.getElementById('result' + type).style.display = 'none';
+        }
+
+        function displayResult(type, value) {
+            document.getElementById('result' + type).style.display = 'block';
+            document.getElementById('error' + type).style.display = 'none';
+            document.getElementById('result' + type).innerHTML = 'Result: ' + value;
+        }
+
+function resetInputFields() {
+            var inputFields = document.querySelectorAll('.calculator-container input');
+            inputFields.forEach(function(input) {
+                input.value = '';
+            });
+            var selectFields = document.querySelectorAll('.calculator-container select');
+            selectFields.forEach(function(select) {
+                select.selectedIndex = 0;
+            });
+            var resultFields = document.querySelectorAll('.result');
+            resultFields.forEach(function(result) {
+                result.style.display = 'none';
+            });
+            var errorFields = document.querySelectorAll('.error');
+            errorFields.forEach(function(error) {
+                error.style.display = 'none';
+            });
+        }
+
+ function calculateOrdinaryAnnuity() {
+            var calculationType = document.getElementById('calculationTypeOrdinary').value;
+            var initialInvestment = parseFloat(document.getElementById('initialInvestmentOrdinary').value);
+            var annualInterestRate = parseFloat(document.getElementById('interestRateOrdinary').value) / 100;
+            var timePeriodYears = parseFloat(document.getElementById('timePeriodOrdinary').value);
+            var errorDiv = document.getElementById('errorOrdinary');
+            var resultDiv = document.getElementById('resultOrdinary');
+
+            // Validate inputs
+            if (isNaN(initialInvestment) || initialInvestment <= 0 || isNaN(annualInterestRate) || annualInterestRate <= 0 || isNaN(timePeriodYears) || timePeriodYears <= 0) {
+                errorDiv.style.display = 'block';
+                errorDiv.innerText = 'Please enter valid values: Principal > 0, Time Period > 0, Rate > 0';
+                resultDiv.style.display = 'none';
+                return;
+            } else {
+                errorDiv.style.display = 'none';
+            }
+
+            const i = annualInterestRate; 
+            const n = timePeriodYears; 
+            const R = initialInvestment;
+
+            var total; 
+
+            if (calculationType === 'futureValue') {
+                total = R * ((Math.pow((1 + i), n) - 1) / i);
+                resultDiv.innerHTML = `<p>The future value of an ordinary annuity is calculated to be <strong>RM${total.toFixed(2)}</strong>. This means that if you invest RM${initialInvestment.toFixed(2)} at the end of each year at an interest rate of ${(annualInterestRate * 100).toFixed(2)}%, at the end of ${timePeriodYears.toFixed(0)} years, you will have a total of <strong>RM${total.toFixed(2)}</strong>.</p>`;
+            } else if (calculationType === 'presentValue') {
+                total = R / ((Math.pow((1 + i), n) - 1) / i);
+                resultDiv.innerHTML = `<p>The present value of an ordinary annuity is calculated to be <strong>RM${total.toFixed(2)}</strong>. This means that if you invest RM${initialInvestment.toFixed(2)} at the end of each year at an interest rate of ${(annualInterestRate * 100).toFixed(2)}%, you would need <strong>RM${total.toFixed(2)}</strong> today to ensure these investments over a period of ${timePeriodYears.toFixed(0)} years.</p>`;
+            }
+
+            resultDiv.style.display = 'block'; 
+        }
+
+function calculateAnnuityDue() {
+    var calculationType = document.getElementById('calculationType').value;
+    var initialInvestment = parseFloat(document.getElementById('initialInvestmentDue').value);
+    var annualInterestRate = parseFloat(document.getElementById('interestRateDue').value) / 100;
+    var timePeriodYears = parseFloat(document.getElementById('timePeriodDue').value);
+    var errorDiv = document.getElementById('errorDue');
+        
+    if (isNaN(initialInvestment) || initialInvestment <= 0 || isNaN(annualInterestRate) || annualInterestRate <= 0 || isNaN(timePeriodYears) || timePeriodYears <= 0) {
+        errorDiv.style.display = 'block';
+	errorDiv.innerText = 'Please enter valid values: Principal > 0, Time Period > 0, Rate > 0';
+        document.getElementById('resultSimple').style.display = 'none';
+        return;
+    }
+
+    const i = annualInterestRate; // Calculate monthly interest rate
+    const n = timePeriodYears; // Convert years to months
+    const R = initialInvestment;
+
+    var total; // Variable to store result
+
+
+    if (calculationType === 'futureValue') {
+	const annuityFactor = R * ((Math.pow((1 + i), n) - 1) / i);
+        total = (1 + i) * annuityFactor;
+        document.getElementById('resultDue').innerHTML = `
+            <p>The future value of an annuity due is calculated to be <strong>RM${total.toFixed(2)}</strong>. This means that if you invest RM${initialInvestment.toFixed(2)} at the beginning of each year at an interest rate of ${(annualInterestRate * 100).toFixed(2)}%, at the end of ${timePeriodYears.toFixed(0)} years, you will have a total of <strong>RM${total.toFixed(2)}</strong>.</p>
+        `;
+    } else if (calculationType === 'presentValue') {
+  	const annuityfactor = R / ((Math.pow((1 + i), n) - 1) / i);
+        total = (1 + i) * annuityfactor;
+        document.getElementById('resultDue').innerHTML = `
+           <p>The present value of an annuity due is calculated to be <strong>RM${total.toFixed(2)}</strong>. This means that the current worth of RM${initialInvestment.toFixed(2)} invested at the beginning of each year at an interest rate of ${(annualInterestRate * 100).toFixed(2)}% over ${timePeriodYears.toFixed(0)} years is <strong>RM${total.toFixed(2)}</strong>.</p>
+        `;
+    }
+
+    errorDiv.style.display = 'none'; // Hide error message if calculation is successful
+    document.getElementById('resultDue').style.display = 'block';
+
+}
+
+// Initially show the home section
+        showContent('home');
+
+        window.onload = resetInputFields;
+</script>
+
+</body>
+</html>
